@@ -5,6 +5,8 @@ from discord.ext import commands
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 intents = discord.Intents.default()
+intents.message_content = True
+
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 def calcular_robux(robux):
@@ -31,5 +33,6 @@ async def robux(ctx, cantidad: float):
     embed.add_field(name="Ganancia", value=f"💵 ${ganancia:,.2f}", inline=False)
 
     await ctx.send(embed=embed)
+
 
 bot.run(TOKEN)
